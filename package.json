@@ -1,0 +1,24 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w",
+    "start:fixtures": "nodemon ./dist/fixtures.js",
+    "start:leagueTable": "nodemon ./dist/leagueTable.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "date-fns": "^2.25.0",
+    "google-auth-library": "^7.10.2",
+    "googleapis": "^39.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "typescript": "^4.4.4"
+  }
+}
