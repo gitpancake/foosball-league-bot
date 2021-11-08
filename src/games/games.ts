@@ -3,7 +3,17 @@ import { GameRow } from '../types/Row';
 import { format } from 'date-fns';
 
 export const buildGames = (rows: any[]): Game[] => {
-	const games: Game[] = rows.map((row) => {
+	const gamesFromTheCurrentHour = rows.filter((row) => {
+		const theDatetimeRightNow = format(new Date(), 'yyyy-MM-dd HH');
+		const theGameTime = format(
+			new Date(row[GameRow.Timestamp]),
+			'yyyy-MM-dd HH',
+		);
+
+		return theDatetimeRightNow === theGameTime;
+	});
+
+	const games: Game[] = gamesFromTheCurrentHour.map((row) => {
 		const formattedGameDate = format(new Date(row[GameRow.Timestamp]), 'HH:mm');
 
 		return {

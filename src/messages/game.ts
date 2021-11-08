@@ -15,7 +15,7 @@ const buildScoreSection = (game: Game) => {
 	}: Game) => {
 		const scoreText = () => {
 			if (homeTeamScore > awayTeamScore) {
-				return `:tada:  "_${highlight}_" \n\n *${homeTeam} beat ${awayTeam}* \n\\n ${homeTeamScore} : ${awayTeamScore}`;
+				return `:tada:  "_${highlight}_" \n\n *${homeTeam} beat ${awayTeam}* \n\n ${homeTeamScore} : ${awayTeamScore}`;
 			} else if (homeTeamScore < awayTeamScore) {
 				return `:tada:  "_${highlight}_" \n\n *${awayTeam} beat ${homeTeam}*  \n\n ${awayTeamScore} : ${homeTeamScore}`;
 			}
