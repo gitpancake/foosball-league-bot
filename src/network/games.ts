@@ -4,14 +4,10 @@ import { Game } from 'src/types/Game';
 import { postToSlack } from './post';
 
 export const postGameScores = async (gamesData: Game[]) => {
-	const hasGames = gamesData.length;
+	const hasGames = gamesData && gamesData.length;
 
 	if (hasGames) {
 		const games = buildGames(gamesData);
-
-		if (games.length <= 0) {
-			return;
-		}
 
 		const data = buildTemplate({ games });
 

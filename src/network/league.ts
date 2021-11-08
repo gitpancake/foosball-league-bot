@@ -8,8 +8,8 @@ export const postLeagueTable = async (
 	teamData: Team[],
 	fixtureData: Game[],
 ) => {
-	if (!teamData.length || !fixtureData.length) {
-		throw new Error('Fatal - unable to process leagues');
+	if (!teamData || !fixtureData || !teamData.length || !fixtureData.length) {
+		return;
 	}
 
 	const leaguePoints = buildLeaguePoints(teamData, fixtureData);

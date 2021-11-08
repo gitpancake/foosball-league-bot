@@ -3,6 +3,10 @@ import { GameRow } from '../types/Row';
 import { format } from 'date-fns';
 
 export const buildGames = (rows: any[]): Game[] => {
+	if (!rows || rows.length <= 0) {
+		return [];
+	}
+
 	const gamesFromTheCurrentHour = rows.filter((row) => {
 		const theDatetimeRightNow = format(new Date(), 'yyyy-MM-dd HH');
 		const theGameTime = format(
