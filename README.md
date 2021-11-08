@@ -1,4 +1,4 @@
-# foosball-league-bot
+# Foosball League Bot
 
 A foosball league bot for use with Slack (or other IM).
 
