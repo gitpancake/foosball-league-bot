@@ -8,7 +8,7 @@ export const postLeagueTable = async (
 	teamData: Team[],
 	fixtureData: Game[],
 ) => {
-	if (!teamData || !fixtureData || !teamData.length || !fixtureData.length) {
+	if (!teamData || !teamData.length) {
 		return;
 	}
 

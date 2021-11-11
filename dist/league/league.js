@@ -13,6 +13,9 @@ const buildLeaguePoints = (teamData, fixtureData) => {
         wins: 0,
         losses: 0,
     }));
+    if (!fixtureData) {
+        return basePoints;
+    }
     const gameInfo = fixtureData.map((game) => ({
         homeTeam: game[Row_1.GameRow.HomeTeam],
         awayTeam: game[Row_1.GameRow.AwayTeam],

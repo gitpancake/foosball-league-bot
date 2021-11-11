@@ -18,6 +18,10 @@ export const buildLeaguePoints = (teamData: Team[], fixtureData: Game[]) => {
 		losses: 0,
 	}));
 
+	if (!fixtureData) {
+		return basePoints;
+	}
+
 	const gameInfo = fixtureData.map((game) => ({
 		//@ts-ignore
 		homeTeam: game[GameRow.HomeTeam],

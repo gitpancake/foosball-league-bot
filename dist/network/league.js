@@ -5,7 +5,7 @@ const leagueTable_1 = require("../messages/leagueTable");
 const league_1 = require("../league/league");
 const post_1 = require("./post");
 const postLeagueTable = async (teamData, fixtureData) => {
-    if (!teamData || !fixtureData || !teamData.length || !fixtureData.length) {
+    if (!teamData || !teamData.length) {
         return;
     }
     const leaguePoints = (0, league_1.buildLeaguePoints)(teamData, fixtureData);
