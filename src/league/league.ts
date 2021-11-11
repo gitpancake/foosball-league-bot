@@ -16,6 +16,7 @@ export const buildLeaguePoints = (teamData: Team[], fixtureData: Game[]) => {
 		goalsAgainst: 0,
 		wins: 0,
 		losses: 0,
+		points: 0,
 	}));
 
 	if (!fixtureData) {
