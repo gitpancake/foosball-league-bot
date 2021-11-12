@@ -1,6 +1,6 @@
 import { Game } from '../types/Game';
 import { GameRow } from '../types/Row';
-import { format } from 'date-fns';
+import { format, addHours, differenceInMinutes } from 'date-fns';
 
 export const buildGames = (rows: any[]): Game[] => {
 	if (!rows || rows.length <= 0) {
@@ -8,13 +8,21 @@ export const buildGames = (rows: any[]): Game[] => {
 	}
 
 	const gamesFromTheCurrentHour = rows.filter((row) => {
-		const theDatetimeRightNow = format(new Date(), 'yyyy-MM-dd HH');
-		const theGameTime = format(
-			new Date(row[GameRow.Timestamp]),
-			'yyyy-MM-dd HH',
+		if (!row.length) return false;
+
+		const gameTime = new Date(row[GameRow.Timestamp]);
+
+		const timeDifference =
+			Number(format(gameTime, 'HH')) - Number(format(new Date(), 'HH'));
+
+		const offsetDateTime = addHours(new Date(), timeDifference);
+
+		const timeDifferenceInMinutes = differenceInMinutes(
+			offsetDateTime,
+			gameTime,
 		);
 
-		return theDatetimeRightNow === theGameTime;
+		return timeDifferenceInMinutes <= 5;
 	});
 
 	const games: Game[] = gamesFromTheCurrentHour.map((row) => {

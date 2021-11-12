@@ -8,9 +8,13 @@ const buildGames = (rows) => {
         return [];
     }
     const gamesFromTheCurrentHour = rows.filter((row) => {
-        const theDatetimeRightNow = (0, date_fns_1.format)(new Date(), 'yyyy-MM-dd HH');
-        const theGameTime = (0, date_fns_1.format)(new Date(row[Row_1.GameRow.Timestamp]), 'yyyy-MM-dd HH');
-        return theDatetimeRightNow === theGameTime;
+        if (!row.length)
+            return false;
+        const gameTime = new Date(row[Row_1.GameRow.Timestamp]);
+        const timeDifference = Number((0, date_fns_1.format)(gameTime, 'HH')) - Number((0, date_fns_1.format)(new Date(), 'HH'));
+        const offsetDateTime = (0, date_fns_1.addHours)(new Date(), timeDifference);
+        const timeDifferenceInMinutes = (0, date_fns_1.differenceInMinutes)(offsetDateTime, gameTime);
+        return timeDifferenceInMinutes <= 5;
     });
     const games = gamesFromTheCurrentHour.map((row) => {
         const formattedGameDate = (0, date_fns_1.format)(new Date(row[Row_1.GameRow.Timestamp]), 'HH:mm');
