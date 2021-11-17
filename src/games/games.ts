@@ -12,8 +12,7 @@ export const buildGames = (rows: any[]): Game[] => {
 
 		const gameTime = new Date(row[GameRow.Timestamp]);
 
-		const timeDifference =
-			Number(format(gameTime, 'HH')) - Number(format(new Date(), 'HH'));
+		const timeDifference = 1;
 
 		const offsetDateTime = addHours(new Date(), timeDifference);
 

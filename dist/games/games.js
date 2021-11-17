@@ -11,7 +11,7 @@ const buildGames = (rows) => {
         if (!row.length)
             return false;
         const gameTime = new Date(row[Row_1.GameRow.Timestamp]);
-        const timeDifference = Number((0, date_fns_1.format)(gameTime, 'HH')) - Number((0, date_fns_1.format)(new Date(), 'HH'));
+        const timeDifference = 1;
         const offsetDateTime = (0, date_fns_1.addHours)(new Date(), timeDifference);
         const timeDifferenceInMinutes = (0, date_fns_1.differenceInMinutes)(offsetDateTime, gameTime);
         return timeDifferenceInMinutes <= 5 && timeDifferenceInMinutes >= 0;
