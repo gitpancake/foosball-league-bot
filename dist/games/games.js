@@ -14,7 +14,7 @@ const buildGames = (rows) => {
         const timeDifference = Number((0, date_fns_1.format)(gameTime, 'HH')) - Number((0, date_fns_1.format)(new Date(), 'HH'));
         const offsetDateTime = (0, date_fns_1.addHours)(new Date(), timeDifference);
         const timeDifferenceInMinutes = (0, date_fns_1.differenceInMinutes)(offsetDateTime, gameTime);
-        return timeDifferenceInMinutes <= 5;
+        return timeDifferenceInMinutes <= 5 && timeDifferenceInMinutes >= 0;
     });
     const games = gamesFromTheCurrentHour.map((row) => {
         const formattedGameDate = (0, date_fns_1.format)(new Date(row[Row_1.GameRow.Timestamp]), 'HH:mm');

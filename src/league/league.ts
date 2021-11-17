@@ -42,10 +42,12 @@ export const buildLeaguePoints = (teamData: Team[], fixtureData: Game[]) => {
 		const team = basePoints.find((team) => team.name === currentTeam.homeTeam);
 
 		if (!team) {
-			throw new Error('Error! Unable to locate team!');
+			console.error(
+				`Error! Unable to locate home team ${currentTeam.homeTeam}!`,
+			);
 		}
 
-		if (team.name === team.name) {
+		if (team && team.name === team.name) {
 			const homeGoals = (team.homeGoals += Number(currentTeam.homeTeamScore));
 
 			const totalGoals = (team.totalGoals += Number(currentTeam.homeTeamScore));
@@ -79,10 +81,12 @@ export const buildLeaguePoints = (teamData: Team[], fixtureData: Game[]) => {
 		const team = basePoints.find((team) => team.name === currentTeam.awayTeam);
 
 		if (!team) {
-			throw new Error('Error! Unable to locate team!');
+			console.error(
+				`Error! Unable to locate away team ${currentTeam.awayTeam}!`,
+			);
 		}
 
-		if (team.name === team.name) {
+		if (team && team.name === team.name) {
 			const awayGoals = (team.awayGoals += Number(currentTeam.awayTeamScore));
 
 			const totalGoals = (team.totalGoals += Number(currentTeam.awayTeamScore));

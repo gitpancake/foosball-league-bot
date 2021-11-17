@@ -22,7 +22,7 @@ export const buildGames = (rows: any[]): Game[] => {
 			gameTime,
 		);
 
-		return timeDifferenceInMinutes <= 5;
+		return timeDifferenceInMinutes <= 5 && timeDifferenceInMinutes >= 0;
 	});
 
 	const games: Game[] = gamesFromTheCurrentHour.map((row) => {
