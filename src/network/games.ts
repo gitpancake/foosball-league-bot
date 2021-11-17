@@ -9,6 +9,10 @@ export const postGameScores = async (gamesData: Game[]) => {
 	if (hasGames) {
 		const games = buildGames(gamesData);
 
+		if (!games || games.length <= 0) {
+			return;
+		}
+
 		const data = buildTemplate({ games });
 
 		await postToSlack({ data });
