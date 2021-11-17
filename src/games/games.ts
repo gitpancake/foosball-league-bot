@@ -2,6 +2,8 @@ import { Game } from '../types/Game';
 import { GameRow } from '../types/Row';
 import { format, addHours, differenceInMinutes } from 'date-fns';
 
+const TIME_DIFFERENCE_CET_GMT_HOURS = 1;
+
 export const buildGames = (rows: any[]): Game[] => {
 	if (!rows || rows.length <= 0) {
 		return [];
@@ -12,9 +14,7 @@ export const buildGames = (rows: any[]): Game[] => {
 
 		const gameTime = new Date(row[GameRow.Timestamp]);
 
-		const timeDifference = 1;
-
-		const offsetDateTime = addHours(new Date(), timeDifference);
+		const offsetDateTime = addHours(new Date(), TIME_DIFFERENCE_CET_GMT_HOURS);
 
 		const timeDifferenceInMinutes = differenceInMinutes(
 			offsetDateTime,

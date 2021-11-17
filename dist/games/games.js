@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.buildGames = void 0;
 const Row_1 = require("../types/Row");
 const date_fns_1 = require("date-fns");
+const TIME_DIFFERENCE_CET_GMT_HOURS = 1;
 const buildGames = (rows) => {
     if (!rows || rows.length <= 0) {
         return [];
@@ -11,8 +12,7 @@ const buildGames = (rows) => {
         if (!row.length)
             return false;
         const gameTime = new Date(row[Row_1.GameRow.Timestamp]);
-        const timeDifference = 1;
-        const offsetDateTime = (0, date_fns_1.addHours)(new Date(), timeDifference);
+        const offsetDateTime = (0, date_fns_1.addHours)(new Date(), TIME_DIFFERENCE_CET_GMT_HOURS);
         const timeDifferenceInMinutes = (0, date_fns_1.differenceInMinutes)(offsetDateTime, gameTime);
         return timeDifferenceInMinutes <= 5 && timeDifferenceInMinutes >= 0;
     });
