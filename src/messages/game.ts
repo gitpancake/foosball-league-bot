@@ -65,7 +65,7 @@ const buildHeaderBlock = ({ numGames }: { numGames: number }) => ({
 	type: 'section',
 	text: {
 		type: 'mrkdwn',
-		text: `:soccer: *${numGames} fixtures played in the last hour! Scores below!* :soccer: \n \n`,
+		text: `:soccer: *${numGames} fixtures played! Scores below!* :soccer: \n \n`,
 	},
 });
 
